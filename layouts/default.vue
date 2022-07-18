@@ -76,13 +76,13 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'Products',
-          to: '/inspire',
+          to: '/products',
         },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js',
+      title: 'M.Eshagh Mojahed',
     }
   },
 }
