@@ -70,8 +70,13 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Articles',
+          title: 'wellcome',
           to: '/',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Articles',
+          to: '/articles',
         },
         {
           icon: 'mdi-chart-bubble',

@@ -6,7 +6,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'IndexPage',
+  name: 'ArticlesPage',
 
   // fetch data of articles
   async asyncData() {
