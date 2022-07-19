@@ -63,7 +63,7 @@
     <v-data-table
       :headers="headers"
       :search="search"
-      :items="products"
+      :items="filteredProducts"
       :items-per-page="5"
       class="elevation-1"
     >
@@ -102,22 +102,37 @@ export default {
       ],
       filters: {
         category: '',
-        price: null,
         range: [0, 2000],
       },
       categories: [
-        'mens clothing',
+        "men's clothing",
         'jewelery',
         'electronics',
-        'womens clothing',
+        "women's clothing",
       ],
       maxPrice: 2000,
       minPrice: 0,
     }
   },
+  computed: {
+    filteredProducts() {
+      const filterCategory = this.filters.category
+      let allFilteredProducts = []
+      if (filterCategory !== '') {
+        let filteredProducts = []
+        for (const cat of filterCategory) {
+          filteredProducts = this.products.filter(
+            (prodcut) => prodcut.category === cat
+          )
+          allFilteredProducts = [
+            ...new Set([...filteredProducts, ...allFilteredProducts]),
+          ]
+        }
+      } else allFilteredProducts = this.products
 
-  // computed
-  computed: {},
+      return allFilteredProducts
+    },
+  },
 }
 </script>
 
