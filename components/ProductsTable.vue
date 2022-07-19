@@ -101,7 +101,7 @@ export default {
         { text: 'Count', value: 'count' },
       ],
       filters: {
-        category: '',
+        category: [],
         range: [0, 2000],
       },
       categories: [
@@ -118,7 +118,7 @@ export default {
     filteredProducts() {
       const filterCategory = this.filters.category
       let allFilteredProducts = []
-      if (filterCategory !== '') {
+      if (filterCategory.length !== 0) {
         let filteredProducts = []
         for (const cat of filterCategory) {
           filteredProducts = this.products.filter(
@@ -128,8 +128,9 @@ export default {
             ...new Set([...filteredProducts, ...allFilteredProducts]),
           ]
         }
-      } else allFilteredProducts = this.products
-
+      } else {
+        allFilteredProducts = this.products
+      }
       return allFilteredProducts
     },
   },
