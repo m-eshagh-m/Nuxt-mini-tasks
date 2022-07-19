@@ -110,7 +110,7 @@ export default {
         'electronics',
         "women's clothing",
       ],
-      maxPrice: 2000,
+      maxPrice: 1000,
       minPrice: 0,
     }
   },
@@ -118,19 +118,49 @@ export default {
     filteredProducts() {
       const filterCategory = this.filters.category
       let allFilteredProducts = []
+
+      // check the lenght of category array
       if (filterCategory.length !== 0) {
         let filteredProducts = []
         for (const cat of filterCategory) {
           filteredProducts = this.products.filter(
             (prodcut) => prodcut.category === cat
           )
+
+          // combine two array
           allFilteredProducts = [
             ...new Set([...filteredProducts, ...allFilteredProducts]),
           ]
         }
-      } else {
+      }
+
+      // range price filter
+      const minPrice = this.filters.range[0]
+      const maxPrice = this.filters.range[1]
+
+      if (minPrice !== this.minPrice || maxPrice !== this.maxPrice) {
+        let filteredProducts = []
+        // if category filter applies
+        if (allFilteredProducts.length !== 0) {
+          filteredProducts = allFilteredProducts.filter(
+            (prodcut) => prodcut.price >= minPrice && prodcut.price <= maxPrice
+          )
+        } else {
+          // if category filter not applies
+          filteredProducts = this.products.filter(
+            (prodcut) => prodcut.price >= minPrice && prodcut.price <= maxPrice
+          )
+        }
+
+        // combine two array
+        allFilteredProducts = [...filteredProducts]
+      }
+
+      // if no filter apply
+      if (allFilteredProducts.length === 0) {
         allFilteredProducts = this.products
       }
+
       return allFilteredProducts
     },
   },
