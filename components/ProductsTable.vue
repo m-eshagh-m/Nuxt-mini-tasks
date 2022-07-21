@@ -114,6 +114,7 @@ export default {
       minPrice: 0,
     }
   },
+
   computed: {
     filteredProducts() {
       const filterCategory = this.filters.category

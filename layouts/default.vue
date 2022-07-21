@@ -83,6 +83,11 @@ export default {
           title: 'Products',
           to: '/products',
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Live Products',
+          to: '/live-products',
+        },
       ],
       miniVariant: false,
       right: true,
