@@ -88,6 +88,11 @@ export default {
           title: 'Live Products',
           to: '/live-products',
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Date Picker',
+          to: '/date-picker',
+        },
       ],
       miniVariant: false,
       right: true,
